@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import * as moment from 'moment';
-import {MessageService} from 'primeng/api';
+import {MenuItem, MessageService} from 'primeng/api';
 import {AuthentificationService} from './_services/authentification.service';
+import {MessagesService} from '../app/messages/messages.service';
+import {Jeu} from '../app/jeux/jeu';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +13,39 @@ import {AuthentificationService} from './_services/authentification.service';
 export class AppComponent {
   title = 'ludotheque-client';
 
-constructor(public messageService: MessageService, public authService: AuthentificationService) {
-}
+  constructor(public messageService: MessageService, public authService: AuthentificationService) {
+  }
+
+  items: MenuItem[];
+  // tslint:disable-next-line:use-lifecycle-interface
+  ngOnInit(): void {
+    this.items = [{
+      label: 'Accueil',
+      icon: 'pi pi-home',
+      routerLink: '/dashboard',
+      routerLinkActiveOptions: { exact: true },
+      command: () => {
+        this.accueil();
+      }
+    },
+      {
+        label: 'Jeux',
+        icon: 'pi pi-users',
+        routerLink: '/jeux',
+        routerLinkActiveOptions: {exact: true},
+        command: () => {
+          this.jeu();
+        }
+      },
+    ];
+  }
+  accueil(): void {
+    console.log('Accueil');
+  }
+
+  jeu(): void {
+    console.log('Jeu');
+  }
 
   show(): void {
     const now = moment().format('LL');
@@ -26,4 +59,5 @@ constructor(public messageService: MessageService, public authService: Authentif
   logout(): void {
     this.authService.logout();
   }
+
 }

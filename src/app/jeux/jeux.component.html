@@ -1,5 +1,5 @@
 <p>jeux works!</p>
-<p-table [value]="jeux">
+<p-table [value]="(jeux$ | async)" let jeux>
   <ng-template pTemplate="header">
     <tr>
       <th>#</th>
@@ -18,16 +18,16 @@
   <ng-template pTemplate="body" let-jeux>
     <tr>
       <td>{{jeux.id}}</td>
-      <td>{{jeux.nom}}</td>
+      <td>{{jeux.name}}</td>
       <td>{{jeux.description}}</td>
-      <td>{{jeux.regles}}</td>
-      <td>{{jeux.langue}}</td>
-      <td>{{jeux.media}}</td>
+      <td>{{jeux.rules}}</td>
+      <td>{{jeux.language}}</td>
+      <td>{{jeux.url}}</td>
       <td>{{jeux.age}}</td>
-      <td>{{jeux.poids}}</td>
+      <td>{{jeux.weight}}</td>
       <td>{{jeux.nombre_joueurs}}</td>
       <td>{{jeux.categories}}</td>
-      <td>{{jeux.duree}}</td>
+      <td>{{jeux.duration}}</td>
       <td>
         <button type="button" pButton pRipple icon="pi pi-list" [routerLink]="['/jeux', jeux.id]"></button>
       </td>
