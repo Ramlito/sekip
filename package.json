@@ -23,8 +23,6 @@
     "angular-in-memory-web-api": "^0.11.0",
     "javascript-lp-solver": "^0.4.24",
     "moment": "^2.29.1",
-
-
     "nativescript-sqlite": "^2.6.6",
     "ngx-markdown": "^11.1.2",
     "ngx-moment": "^5.0.0",
