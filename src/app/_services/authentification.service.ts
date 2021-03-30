@@ -91,6 +91,24 @@ export class AuthentificationService {
       }));
   }
 
+  register(nom: string, prenom: string, pseudo: string, email: string, password: string): Observable<any> {
+    console.log('nom', nom, 'prenom', prenom, 'pseudo', pseudo, 'email', email, ' password ', password);
+    // tslint:disable-next-line:max-line-length
+    return this.http.post<any>(environment.apiUrl + '/auth/register', {nom: 'nom', prenom: 'prenom', pseudo: 'pseudo', email: 'email', password: 'password'}, httpOptions)
+      .pipe(
+        tap(rep => console.log(rep)),
+        map(rep => {
+          const user = {...rep.data.value};
+          console.log('User register : ', user);
+          return user;
+        }),
+        shareReplay(),
+        catchError(err => {
+          console.log(err);
+          return throwError('bug');
+        }));
+  }
+
   private startRefreshTokenTimer(): void {
     // parse json object from base64 encoded jwt token
     const jwtToken = JSON.parse(atob(this.userValue.jwtToken.split('.')[1]));

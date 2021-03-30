@@ -20,8 +20,8 @@ export class LoginComponent implements OnInit {
   error = '';
 
   formulaire = new FormGroup({
-    email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required])
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[0-9]).{8,}$')])
   });
 
   constructor(private messageService: MessageService, private authService: AuthentificationService, private router: Router,
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.form = {...this.form, ...this.formulaire.value};
+    this.form = this.formulaire.value;
     this.loading = true;
     this.authService.login(this.form.email, this.form.password)
       .pipe(first())

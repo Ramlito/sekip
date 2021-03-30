@@ -6,13 +6,12 @@ import { PanelModule } from 'primeng/panel';
 import { ListboxModule } from 'primeng/listbox';
 import { TableModule } from 'primeng/table';
 
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
 import {NouveauUtilisateurComponent} from './nouveau-utilisateur/nouveau-utilisateur.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthentificationService} from './_services/authentification.service';
 import {MessagesModule} from 'primeng/messages';
 import {ToastModule} from 'primeng/toast';
@@ -30,6 +29,7 @@ import { JeuxComponent } from './jeux/jeux.component';
 import { MessagesComponent } from './messages/messages.component';
 import { JeuxDetailsComponent } from './jeux/jeux-details.component';
 import {JeuService} from './jeux/jeu.service';
+import {ButtonModule} from 'primeng/button';
 
 
 
@@ -42,9 +42,7 @@ registerLocaleData(localeFr, 'fr');
     LoginComponent,
     ProfileComponent,
     LpSolverTestComponent,
-
     NouveauUtilisateurComponent,
-
     JeuxComponent,
     MessagesComponent,
     JeuxDetailsComponent
@@ -53,9 +51,11 @@ registerLocaleData(localeFr, 'fr');
     BrowserModule,
     BrowserAnimationsModule,
     MarkdownModule.forRoot(),
+    FormsModule,
     AppRoutingModule,
     MomentModule,
     MessagesModule,
+    ButtonModule,
     ToastModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -71,4 +71,4 @@ registerLocaleData(localeFr, 'fr');
   bootstrap: [AppComponent]
 })
 export class AppModule {
-};
+}

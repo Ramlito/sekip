@@ -46,18 +46,18 @@
   </div>
   <div class="p-formgroup-inline">
     <div class="p-field">
-      <label for="mail" class="p-sr-only">Email</label>
-      <input id="mail" type="text" pInputText placeholder="mail" formControlName="mail">
-      <div *ngIf="mail.invalid && (mail.dirty || mail.touched)" class="mat-error">
-        <div *ngIf="mail?.errors.required" style="color:crimson">Le mail est obligatoire</div>
-        <div *ngIf="mail?.errors.pattern"  style="color:crimson">Le mail n'est pas au bon format</div>
+      <label for="email" class="p-sr-only">Email</label>
+      <input id="email" type="text" pInputText placeholder="email" formControlName="email">
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="mat-error">
+        <div *ngIf="email?.errors.required" style="color:crimson">Le mail est obligatoire</div>
+        <div *ngIf="email?.errors.pattern"  style="color:crimson">Le mail n'est pas au bon format</div>
       </div>
     </div>
   </div>
   <div formGroupName ="password">
     <div class="form-group">
       <input type="password" id="pwd" pInputText placeholder="Mots de passe" class="form-control" formControlName="pwd">
-      <div *ngIf="pwd.invalid && pwd.touched"
+      <div *ngIf="pwd.invalid && pwd.touched && pwd?.errors.required && pwd?.errors.pattern"
            class="card-panel red accent-1">
         Le mot de passe doit comporter au minimum 8 caractères dont au moins une majuscule et un chiffre.
       </div>

@@ -10,10 +10,11 @@ import {MessagesService} from '../messages/messages.service';
   styleUrls: ['./jeux.component.css']
 })
 export class JeuxComponent implements OnInit {
+  jeux: Jeu[];
   mode = 0;
   icon = '';
   // tslint:disable-next-line:no-shadowed-variable
-  constructor(public JeuService: JeuService, private messagesService: MessagesService) {
+  constructor(public jeuService: JeuService/*, private messagesService: MessagesService*/) {
     // @ts-ignore
     /*this.messagesService.add('Liste jeux créée : ' + this.jeux.length);*/
   }
@@ -21,7 +22,8 @@ export class JeuxComponent implements OnInit {
   jeux$: Observable<Jeu[]>;
   ngOnInit(): void {
     // @ts-ignore
-    this.jeux$ = this.JeuService.getJeux();
+    this.jeux = this.jeuService.getJeux();
+    this.jeux$ = this.jeuService.getJeuxObs();
   }
 
   // tslint:disable-next-line:typedef
