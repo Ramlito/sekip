@@ -15,7 +15,7 @@
     "@angular/cdk": "^11.2.5",
     "@angular/common": "~11.2.4",
     "@angular/compiler": "~11.2.4",
-    "@angular/core": "~11.2.4",
+    "@angular/core": "^11.2.7",
     "@angular/forms": "~11.2.4",
     "@angular/platform-browser": "~11.2.4",
     "@angular/platform-browser-dynamic": "~11.2.4",
@@ -23,6 +23,8 @@
     "angular-in-memory-web-api": "^0.11.0",
     "javascript-lp-solver": "^0.4.24",
     "moment": "^2.29.1",
+
+
     "nativescript-sqlite": "^2.6.6",
     "ngx-markdown": "^11.1.2",
     "ngx-moment": "^5.0.0",

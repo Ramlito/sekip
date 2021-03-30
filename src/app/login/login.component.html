@@ -1,6 +1,8 @@
+<div class="login">
 <form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
   <input type="text" formControlName="email" pInputText placeholder="email"><br>
   <input type="password" formControlName="password" pInputText placeholder="mots de passe"><br>
   <button [disabled]="!formulaire.valid">Valide</button>
   <a routerLink="/newUser"><button class="btn btn-success pull-right" > S'inscrire</button></a>
 </form>
+</div>
