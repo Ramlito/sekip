@@ -2,6 +2,10 @@ import {LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import localeFr from '@angular/common/locales/fr';
 
+import { PanelModule } from 'primeng/panel';
+import { ListboxModule } from 'primeng/listbox';
+import { TableModule } from 'primeng/table';
+
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -22,6 +26,12 @@ import { ProfileComponent } from './profile/profile.component';
 import {UserService} from './_services/user.service';
 import { LpSolverTestComponent } from './lp-solver-test/lp-solver-test.component';
 import {MarkdownModule} from 'ngx-markdown';
+import { JeuxComponent } from './jeux/jeux.component';
+import { MessagesComponent } from './messages/messages.component';
+import { JeuxDetailsComponent } from './jeux/jeux-details.component';
+import {JeuService} from './jeux/jeu.service';
+
+
 
 
 registerLocaleData(localeFr, 'fr');
@@ -32,7 +42,12 @@ registerLocaleData(localeFr, 'fr');
     LoginComponent,
     ProfileComponent,
     LpSolverTestComponent,
-    NouveauUtilisateurComponent
+
+    NouveauUtilisateurComponent,
+
+    JeuxComponent,
+    MessagesComponent,
+    JeuxDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -43,14 +58,17 @@ registerLocaleData(localeFr, 'fr');
     MessagesModule,
     ToastModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TableModule,
+    PanelModule,
+    ListboxModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },
-    UserService
+    UserService, JeuService
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-}
+};
