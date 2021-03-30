@@ -1,5 +1,7 @@
+<div class="login">
 <form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
   Email : <input type="text" formControlName="email"><br>
   Mot de passe : <input type="password" formControlName="password"><br>
   <button [disabled]="!formulaire.valid">Valide</button>
 </form>
+</div>

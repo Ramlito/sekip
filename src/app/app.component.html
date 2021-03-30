@@ -1,9 +1,25 @@
+<div class="public">
+  <ul>
+    <li><a [routerLink]="'/'">L'EKIP</a></li>
+  </ul>
+</div>
+
+<div class="private">
 <ul>
   <li *ngIf="authService.isLoggedOut$ | async"><a [routerLink]="['/login']">Login</a></li>
+  <li *ngIf="authService.isLoggedOut$ | async"><a [routerLink]="['/register']">Register</a></li>
   <li *ngIf="authService.isLoggedIn$ | async"><a [routerLink]="['/profile']">Profile</a></li>
-  <li *ngIf="authService.isLoggedIn$ | async"><button (click)="logout()">logout</button></li>
-  <li><a [routerLink]="['/ro']">Exo RO</a></li>
+  <li *ngIf="authService.isLoggedIn$ | async"><a (click)="logout()">Logout</a></li>
 </ul>
+</div>
+
+<div class="article">
+  <h1 *ngIf="authService.isLoggedOut$ | async">Bienvenue sur la ludoteque de l'EKIP</h1>
+  <h1 *ngIf="authService.isLoggedIn$ | async" >Bienvenue sur la ludoteque de l'EKIP de {{authService.userValue.pseudo}}</h1>
+  <h2 *ngIf="authService.isLoggedIn$ | async ">Vos Jeux: </h2>
+  <h2 *ngIf="authService.isLoggedOut$ | async">Connectez-vous ou inscrivez-vous pour pouvoir gérer vos jeux</h2>
+</div>
+
 <router-outlet></router-outlet>
 
 <p-toast position="top-right" key="main"></p-toast>
