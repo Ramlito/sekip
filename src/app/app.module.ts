@@ -2,9 +2,11 @@ import {LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import localeFr from '@angular/common/locales/fr';
 
+
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
+import {NouveauUtilisateurComponent} from './nouveau-utilisateur/nouveau-utilisateur.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AuthentificationService} from './_services/authentification.service';
@@ -21,6 +23,7 @@ import {UserService} from './_services/user.service';
 import { LpSolverTestComponent } from './lp-solver-test/lp-solver-test.component';
 import {MarkdownModule} from 'ngx-markdown';
 
+
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -28,7 +31,8 @@ registerLocaleData(localeFr, 'fr');
     AppComponent,
     LoginComponent,
     ProfileComponent,
-    LpSolverTestComponent
+    LpSolverTestComponent,
+    NouveauUtilisateurComponent
   ],
   imports: [
     BrowserModule,

@@ -20,8 +20,8 @@ export class LoginComponent implements OnInit {
   error = '';
 
   formulaire = new FormGroup({
-    email: new FormControl('robert.duchmol@domain.fr', [Validators.required]),
-    password: new FormControl('secret00', [Validators.required])
+    email: new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
+    password: new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')])
   });
 
   constructor(private messageService: MessageService, private authService: AuthentificationService, private router: Router,
