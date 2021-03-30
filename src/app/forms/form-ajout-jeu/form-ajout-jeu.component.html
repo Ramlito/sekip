@@ -1,0 +1,44 @@
+<p>form-ajout-jeu works!</p>
+<form [formGroup]="formulaire">
+  <p-panel [header]="">
+    <div class="p-fluid forms-grid" style="margin: 1em 0">
+      <div class="p-field">
+        <label for="nom">Nom</label>
+        <p-dropdown id="nom" name="nom" aria-describedby="nom-help"  optionLabel="nom" optionValue="nom" [options]="nom" formControlName="nom"></p-dropdown>
+        <small *ngIf="nom.invalid && nom.touched"  id="nom-help" class="p-error">Le nom est obligatoire.</small>
+      </div>
+
+      <div class="p-field">
+        <label for="description">Description</label>
+        <p-dropdown id="description" name="description" aria-describedby="description-help"  optionLabel="description" optionValue="description" [options]="description" formControlName="description"></p-dropdown>
+        <small *ngIf="description.invalid && description.touched"  id="description-help" class="p-error">La description est obligatoire.</small>
+      </div>
+
+      <div class="p-field">
+        <label for="regles">Règles</label>
+        <p-dropdown id="regles" name="regles" aria-describedby="regles-help"  optionLabel="regles" optionValue="regles" [options]="regles" formControlName="regles"></p-dropdown>
+        <small *ngIf="regles.invalid && regles.touched"  id="regles-help" class="p-error">Les règles sont obligatoires.</small>
+      </div>
+
+      <div class="p-field">
+        <label for="langue">Langue</label>
+        <p-dropdown id="langue" name="langue" aria-describedby="langue-help"  optionLabel="langue" optionValue="langue" [options]="langue" formControlName="langue"></p-dropdown>
+        <small *ngIf="langue.invalid && langue.touched"  id="langue-help" class="p-error">La langue est obligatoire.</small>
+      </div>
+
+      <div class="p-field">
+        <label for="url_media">URL Media</label>
+        <p-dropdown id="url_media" name="url_media" aria-describedby="url_media-help"  optionLabel="url_media" optionValue="url_media" [options]="url_media" formControlName="url_media"></p-dropdown>
+        <small *ngIf="url_media.invalid && url_media.touched"  id="url_media-help" class="p-error">L'url de média est obligatoire.</small>
+      </div>
+
+      <div class="p-field">
+        <label for="age">Age</label>
+        <p-dropdown id="age" name="age" aria-describedby="age-help"  optionLabel="age" optionValue="age" [options]="age" formControlName="age"></p-dropdown>
+        <small *ngIf="age.invalid && age.touched"  id="age-help" class="p-error">L'age est obligatoire.</small>
+      </div>
+
+      <button pButton type="submit" label="Valide" [disabled]="!formulaire.valid" ></button>
+    </div>
+  </p-panel>
+</form>
