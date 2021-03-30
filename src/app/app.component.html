@@ -1,5 +1,6 @@
 <div class="public">
   <ul>
+    <li><a [routerLink]="'/jeux'">Liste Jeux</a></li>
     <li><a [routerLink]="'/'">L'EKIP</a></li>
   </ul>
 </div>
@@ -7,7 +8,7 @@
 <div class="private">
 <ul>
   <li *ngIf="authService.isLoggedOut$ | async"><a [routerLink]="['/login']">Login</a></li>
-  <li *ngIf="authService.isLoggedOut$ | async"><a [routerLink]="['/register']">Register</a></li>
+  <li *ngIf="authService.isLoggedOut$ | async"><a [routerLink]="['/newUser']">Register</a></li>
   <li *ngIf="authService.isLoggedIn$ | async"><a [routerLink]="['/profile']">Profile</a></li>
   <li *ngIf="authService.isLoggedIn$ | async"><a (click)="logout()">Logout</a></li>
 </ul>
