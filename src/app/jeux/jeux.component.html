@@ -1,35 +1,40 @@
-<p>Liste des jeux:</p>
+<button class="btn" (click)="goToAjout()">Ajouter un jeu</button>
+
 <p-table [value]="(jeux$ | async)" let jeux>
   <ng-template pTemplate="header">
     <tr>
       <th>#</th>
       <th>Nom</th>
       <th>Description</th>
-      <th>Règles</th>
-      <th>Langue</th>
+      <th>Thème</th>
+      <th>Editeur</th>
       <th>URL Media</th>
+      <th>Langue</th>
       <th>Âge</th>
       <th>Poids</th>
       <th>Nombre Joueurs</th>
-      <th>Catégories</th>
       <th>Durée</th>
+      <th>Règles</th>
+      <th>Catégorie</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-jeux>
     <tr>
       <td>{{jeux.id}}</td>
-      <td>{{jeux.name}}</td>
+      <td>{{jeux.nom}}</td>
       <td>{{jeux.description}}</td>
-      <td>{{jeux.rules}}</td>
+      <td>{{jeux.themeId}}</td>
+      <td>{{jeux.editeurId}}</td>
+      <td>{{jeux.url_media}}</td>
       <td>{{jeux.language}}</td>
-      <td>{{jeux.url}}</td>
       <td>{{jeux.age}}</td>
-      <td>{{jeux.weight}}</td>
-      <td>{{jeux.nombre_joueurs}}</td>
-      <td>{{jeux.categories}}</td>
+      <td>{{jeux.poids}}</td>
+      <td>{{jeux.nombreJoueurs}}</td>
       <td>{{jeux.duration}}</td>
+      <td>{{jeux.rules}}</td>
+      <td>{{jeux.categorie}}</td>
       <td>
-        <button type="button" pButton pRipple icon="pi pi-list" [routerLink]="['/jeux', jeux.id]"></button>
+        <button type="button" pButton pRipple icon="pi pi-list" [routerLink]="['/jeux',jeux.id]"></button>
       </td>
     </tr>
   </ng-template>
