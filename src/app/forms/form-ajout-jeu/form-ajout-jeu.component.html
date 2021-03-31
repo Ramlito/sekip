@@ -1,44 +1,103 @@
-<p>form-ajout-jeu works!</p>
-<form [formGroup]="formulaire">
-  <p-panel [header]="">
+<form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+  <p-panel [header]="jeu">
     <div class="p-fluid forms-grid" style="margin: 1em 0">
       <div class="p-field">
-        <label for="nom">Nom</label>
-        <p-dropdown id="nom" name="nom" aria-describedby="nom-help"  optionLabel="nom" optionValue="nom" [options]="nom" formControlName="nom"></p-dropdown>
+        <label for="inputNom" class="p-sr-only">Nom</label>
+        <input id="inputNom"
+               placeholder="Nom"
+               formControlName="nom" type="text" pInputText>
         <small *ngIf="nom.invalid && nom.touched"  id="nom-help" class="p-error">Le nom est obligatoire.</small>
       </div>
 
       <div class="p-field">
-        <label for="description">Description</label>
-        <p-dropdown id="description" name="description" aria-describedby="description-help"  optionLabel="description" optionValue="description" [options]="description" formControlName="description"></p-dropdown>
+        <label for="inputDescription" class="p-sr-only">Description</label>
+        <input id="inputDescription"
+               placeholder="Description"
+               formControlName="description" type="text" pInputText>
         <small *ngIf="description.invalid && description.touched"  id="description-help" class="p-error">La description est obligatoire.</small>
       </div>
 
       <div class="p-field">
-        <label for="regles">Règles</label>
-        <p-dropdown id="regles" name="regles" aria-describedby="regles-help"  optionLabel="regles" optionValue="regles" [options]="regles" formControlName="regles"></p-dropdown>
-        <small *ngIf="regles.invalid && regles.touched"  id="regles-help" class="p-error">Les règles sont obligatoires.</small>
+        <label for="inputTheme" class="p-sr-only">Thème</label>
+        <input id="inputTheme"
+               placeholder="Thème"
+               formControlName="theme" type="text" pInputText>
+        <small *ngIf="theme.invalid && theme.touched"  id="theme-help" class="p-error">Le thème est obligatoire.</small>
       </div>
 
       <div class="p-field">
-        <label for="langue">Langue</label>
-        <p-dropdown id="langue" name="langue" aria-describedby="langue-help"  optionLabel="langue" optionValue="langue" [options]="langue" formControlName="langue"></p-dropdown>
+        <label for="inputEditeur" class="p-sr-only">Editeur</label>
+        <input id="inputEditeur"
+               placeholder="Editeur"
+               formControlName="editeur" type="text" pInputText>
+        <small *ngIf="editeur.invalid && editeur.touched"  id="editeur-help" class="p-error">L'éditeur'est obligatoire.</small>
+      </div>
+
+      <div class="p-field">
+        <label for="inputUrlMedia" class="p-sr-only">Url Média</label>
+        <input id="inputUrlMedia"
+               placeholder="Url de média"
+               formControlName="url_media" type="text" pInputText>
+        <small *ngIf="urlMedia.invalid && urlMedia.touched"  id="url_media-help" class="p-error">L'url de média est obligatoire.</small>
+      </div>
+
+      <div class="p-field">
+        <label for="inputLangue" class="p-sr-only">Langue</label>
+        <input id="inputLangue"
+               placeholder="Langue"
+               formControlName="langue" type="text" pInputText>
         <small *ngIf="langue.invalid && langue.touched"  id="langue-help" class="p-error">La langue est obligatoire.</small>
       </div>
 
       <div class="p-field">
-        <label for="url_media">URL Media</label>
-        <p-dropdown id="url_media" name="url_media" aria-describedby="url_media-help"  optionLabel="url_media" optionValue="url_media" [options]="url_media" formControlName="url_media"></p-dropdown>
-        <small *ngIf="url_media.invalid && url_media.touched"  id="url_media-help" class="p-error">L'url de média est obligatoire.</small>
+        <label for="inputAge" class="p-sr-only">Âge</label>
+        <input id="inputAge"
+               placeholder="Age"
+               formControlName="age" type="number" pInputText>
+        <small *ngIf="age.invalid && age.touched"  id="age-help" class="p-error">L'âge est obligatoire.</small>
       </div>
 
       <div class="p-field">
-        <label for="age">Age</label>
-        <p-dropdown id="age" name="age" aria-describedby="age-help"  optionLabel="age" optionValue="age" [options]="age" formControlName="age"></p-dropdown>
-        <small *ngIf="age.invalid && age.touched"  id="age-help" class="p-error">L'age est obligatoire.</small>
+        <label for="inputPoids" class="p-sr-only">Poids</label>
+        <input id="inputPoids"
+               placeholder="Poids"
+               formControlName="poids" type="number" pInputText>
+        <small *ngIf="poids.invalid && poids.touched"  id="poids-help" class="p-error">Le poids est obligatoire.</small>
       </div>
 
-      <button pButton type="submit" label="Valide" [disabled]="!formulaire.valid" ></button>
+      <div class="p-field">
+        <label for="inputNombreJoueurs" class="p-sr-only">Nombre de joueurs</label>
+        <input id="inputNombreJoueurs"
+               placeholder="Nombre de joueurs"
+               formControlName="nombre_joueurs" type="number" pInputText>
+        <small *ngIf="nombreJoueurs.invalid && nombreJoueurs.touched"  id="nombreJoueurs-help" class="p-error">Le nombre de joueurs est obligatoire.</small>
+      </div>
+
+      <div class="p-field">
+        <label for="inputDuree" class="p-sr-only">Durée</label>
+        <input id="inputDuree"
+               placeholder="Durée"
+               formControlName="duree" type="text" pInputText>
+        <small *ngIf="duree.invalid && duree.touched"  id="duree-help" class="p-error">La durée est obligatoire.</small>
+      </div>
+
+      <div class="p-field">
+        <label for="inputRegles" class="p-sr-only">Règles</label>
+        <input id="inputRegles"
+               placeholder="Règles"
+               formControlName="regles" type="text" pInputText>
+        <small *ngIf="regles.invalid && regles.touched"  id="regles-help" class="p-error">Les règles sont obligatoires.</small>
+      </div>
+
+      <div class="p-field">
+        <label for="inputCategorie" class="p-sr-only">Catégorie</label>
+        <input id="inputCategorie"
+               placeholder="Catégorie"
+               formControlName="categorie" type="text" pInputText>
+        <small *ngIf="categorie.invalid && categorie.touched"  id="categorie-help" class="p-error">La catégorie est obligatoire.</small>
+      </div>
+
+      <button pButton class="btn btn-primary" type="submit" label="Valide" [disabled]="!formulaire.valid">Ajouter</button>
     </div>
   </p-panel>
 </form>
