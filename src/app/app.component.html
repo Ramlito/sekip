@@ -1,11 +1,18 @@
-<ul>
-  <li *ngIf="authService.isLoggedOut$ | async"><a [routerLink]="['/login']">Login</a></li>
-  <li *ngIf="authService.isLoggedIn$ | async"><a [routerLink]="['/profile']">Profile</a></li>
-  <li *ngIf="authService.isLoggedIn$ | async"><button (click)="logout()">logout</button></li>
-  <li><a [routerLink]="['/ro']">Exo RO</a></li>
-</ul>
-<router-outlet></router-outlet>
+<html>
+<Header>
+  <div class="topnav">
+    <ul>
+      <a [routerLink]="'/'">L'EKIP</a>
+      <a [routerLink]="'/jeux'">Liste Jeux</a>
+      <a *ngIf="authService.isLoggedOut$ | async"[routerLink]="['/login']">Login</a>
+      <a *ngIf="authService.isLoggedOut$ | async"[routerLink]="['/newUser']">Inscription</a>
+      <a *ngIf="authService.isLoggedOut$ | async"[routerLink]="['/profil']">Profil</a>
+      <a  *ngIf="authService.isLoggedIn$ | async">(click)="logout()">Logout</a>
+    </ul>
+  </div>
 
-<p-toast position="top-right" key="main"></p-toast>
+  <router-outlet></router-outlet>
 
-<button (click)="show()">test</button>
+  <p-toast position="top-right" key="main"></p-toast>
+</Header>
+</html>
