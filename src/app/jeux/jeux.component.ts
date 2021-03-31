@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Type} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Jeu} from './jeu';
 import {JeuService} from './jeu.service';
@@ -19,7 +19,6 @@ export class JeuxComponent implements OnInit {
     /*this.messagesService.add('Liste jeux créée : ' + this.jeux.length);*/
   }
 
-  jeux$: Observable<Jeu[]>;
   ngOnInit(): void {
     // @ts-ignore
     this.jeux$ = this.JeuService.getJeux();
@@ -32,28 +31,4 @@ export class JeuxComponent implements OnInit {
     }
     this.router.navigate(navigationDetails);
   }
-
-  // tslint:disable-next-line:typedef
-  /*onTri() {
-    console.log('Mode : ' + this.mode);
-    this.mode++;
-    // tslint:disable-next-line:triple-equals
-    if (this.mode == 1) { // tri croissant par nom
-      this.icon = 'pi pi-chevron-up';
-      this.jeux = this.JeuService.getJeux(1);
-      // tslint:disable-next-line:triple-equals
-    } else if (this.mode == 2) { // tri décroissant par nom
-      this.icon = 'pi pi-chevron-down';
-      this.jeux = this.JeuService.getJeux(-1);
-      // tslint:disable-next-line:triple-equals
-    } else if (this.mode == 3) { // tri décroissant par id
-      this.icon = 'pi pi-user';
-      this.jeux = this.JeuService.getJeux(0);
-    } else {  // liste de départ
-      this.mode = 0;
-      this.icon = '';
-      this.jeux = this.JeuService.getJeux();
-    }
-
-  }*/
 }
