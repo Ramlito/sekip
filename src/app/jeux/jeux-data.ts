@@ -21,6 +21,7 @@ export class Datas {
   public genereJeux(): Jeu[] {
     const jeux = [];
     faker.setLocale('fr');
+<<<<<<< HEAD
     for (let i = 0; i < 10; i++) {
       Datas.idJ++;
       const jeu = {
@@ -39,6 +40,22 @@ export class Datas {
       };
       jeux.push(jeu);
     }
+=======
+    const jeu = {
+      id: faker.name.id(),
+      nom: faker.name.nom(),
+      description: faker.name.description(),
+      regles: faker.name.regles(),
+      langue: faker.name.langue(),
+      url_media: faker.name.url_media(),
+      age: faker.name.age(),
+      poids: faker.name.poids(),
+      nombre_joueurs: faker.name.nombre_joueurs(),
+      categorie: faker.name.categorie(),
+      duree: faker.name.duree()
+    };
+    jeux.push(jeu);
+>>>>>>> ba78b4275ab39b0b02d51020c5b4e117e3295f0b
     return jeux;
   }
 }
