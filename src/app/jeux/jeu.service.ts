@@ -37,9 +37,9 @@ export class JeuService {
   }
 
   // tslint:disable-next-line:max-line-length
-  addJeu(nom: string, description: string, regles: string, langue: string, urlMedia: string, age: number, poids: number, nombreJoueurs: number, categorie: string, duree: number, theme: string, editeur: string): Observable<Jeu> {
+  addJeu(nom: string, description: string, regles: string, langue: string, url_media: string, age: number, poids: number, nombre_joueurs: number, categorie: string, duree: number, theme: string, editeur: string): Observable<Jeu> {
     // tslint:disable-next-line:max-line-length
-    return this.http.post<any>(environment.apiUrl + '/jeux', {nom, description, theme, editeur, urlMedia, langue, age, poids, nombreJoueurs, duree, regles, categorie}, httpOptions)
+    return this.http.post<any>(environment.apiUrl + '/jeux', {nom, description, theme, editeur, url_media, langue, age, poids, nombre_joueurs, duree, regles, categorie}, httpOptions)
       .pipe(
         tap(rep => console.log(rep)),
         map(rep => {

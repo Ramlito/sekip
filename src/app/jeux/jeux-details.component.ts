@@ -12,7 +12,7 @@ import { Jeu } from './jeu';
     <div class="p-text-center" style="font-size: xx-large; font-weight: bold">Jeu</div>
     <div class="p-d-flex  p-flex p-jc-around">
       <div style="font-size: xxx-large; font-weight: bold">{{jeu.nom}}</div>
-      <div style="font-size: xxx-large; font-weight: bold">{{jeu.url_media}}</div>
+      <div style="font-size: xxx-large; font-weight: bold">{{jeu.urlMedia}}</div>
     </div>
     <p-table class="p-shadow-2 p-m-6 " [value]="jeu" [scrollable]="true" scrollHeight="400px">
       <ng-template pTemplate="header">
@@ -33,8 +33,8 @@ import { Jeu } from './jeu';
       <ng-template pTemplate="body" let-jeux>
         <tr>
           <td>{{jeux.description}}</td>
-          <td>{{jeux.themeId}}</td>
-          <td>{{jeux.editeurId}}</td>
+          <td>{{jeux.theme}}</td>
+          <td>{{jeux.editeur}}</td>
           <td>{{jeux.url_media}}</td>
           <td>{{jeux.language}}</td>
           <td>{{jeux.age}}</td>

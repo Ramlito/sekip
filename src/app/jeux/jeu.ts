@@ -10,7 +10,6 @@ export interface Jeu {
   duree: number;
   regles: string;
   categorie: string;
-  userId: number;
-  themeId: number;
-  editeurId: number;
+  theme: number;
+  editeur: number;
 }

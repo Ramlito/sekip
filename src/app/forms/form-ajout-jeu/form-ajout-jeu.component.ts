@@ -21,8 +21,6 @@ const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json
 })
 
 export class FormAjoutJeuComponent implements OnInit {
-  [x: string]: any;
-
   private readonly apiUrl = 'http://localhost:8000/api';
 
   submitted = false;
@@ -35,7 +33,7 @@ export class FormAjoutJeuComponent implements OnInit {
     url_media: null,
     age: null,
     poids: null,
-    nombre_joueurs: null,
+    nombreJoueurs: null,
     categorie: null,
     duree: null,
     theme: null,
@@ -52,7 +50,7 @@ export class FormAjoutJeuComponent implements OnInit {
     langue: new FormControl(undefined, [Validators.required]),
     url_media: new FormControl(undefined, [Validators.required]),
     age: new FormControl(undefined, [Validators.required]),
-    poids: new FormControl(undefined, [Validators.required]),
+    poids: new FormControl(undefined, [Validators.required, Validators.min(0.1), Validators.max(5.0)]),
     nombre_joueurs: new FormControl(undefined, [Validators.required]),
     categorie: new FormControl(undefined, [Validators.required]),
     duree: new FormControl(undefined, [Validators.required]),
@@ -75,7 +73,7 @@ export class FormAjoutJeuComponent implements OnInit {
         throw new Error('Method not implemented.');
     }
   // tslint:disable-next-line:max-line-length
-    addJeu(nom: string, description: string, regles: string, langue: string, urlMedia: string, age: number, poids: number, nombreJoueurs: number, categorie: string, duree: number): Observable<Jeu> {
+    addJeu(nom: string, description: string, regles: string, langue: string, url_media: string, age: number, poids: number, nombre_joueurs: number, categorie: string, duree: number): Observable<Jeu> {
         throw new Error('Method not implemented.');
     }
 
@@ -102,7 +100,7 @@ export class FormAjoutJeuComponent implements OnInit {
     return this.formulaire.get('langue');
   }
 
-  get urlMedia(): AbstractControl{
+  get url_media(): AbstractControl{
     return this.formulaire.get('url_media');
   }
 
@@ -114,7 +112,7 @@ export class FormAjoutJeuComponent implements OnInit {
     return this.formulaire.get('poids');
   }
 
-  get nombreJoueurs(): AbstractControl{
+  get nombre_joueurs(): AbstractControl{
     return this.formulaire.get('nombre_joueurs');
   }
 
@@ -134,24 +132,25 @@ export class FormAjoutJeuComponent implements OnInit {
     return this.formulaire.get('editeur');
   }
 // tslint:disable-next-line:typedef
-  onSubmit() {
-    this.form = this.formulaire.value;
-    this.loading = true;
+  onSubmit(): void {
+    // @ts-ignore
     // tslint:disable-next-line:max-line-length
-    this.jeuService.addJeu(this.form.nom, this.form.description, this.form.editeur_id, this.form.theme_id, this.form.url_media, this.form.langue, this.form.age, this.form.poids, this.form.nombre_joueurs, this.form.duree, this.form.regles, this.form.categorie )
-      .pipe(first())
-      .subscribe(
-        () => {
-          this.router.navigate([this.returnUrl]);
-          this.messageService.add({severity: 'info', summary: 'Création du nouveau jeu', detail: `Succès`, key: 'main'});
-        },
-        error => {
-          console.log('Erreur: ', error);
-          // this.error = error.error.data.values[0];
-          this.loading = false;
-          this.messageService.add({severity: 'error', summary: 'Erreur', detail: this.error, key: 'main'});
-        }
-      );
-
+    this.form = {...this.form, ...this.formulaire.value};
+    this.loading = true;
+    const uid = this.authService.userValue.id;
+    this.http.post('http://localhost:8000/api/jeux', {
+      nom: this.form.nom,
+      description: this.form.description,
+      theme: this.form.theme,
+      editeur: this.form.editeur,
+      langue: this.form.langue,
+      age: this.form.age,
+      poids: this.form.poids,
+      nombre_joueurs: this.form.nombre_joueurs,
+      categorie: this.form.categorie,
+      duree: this.form.duree,
+      regles: this.form.regles,
+    }, httpOptions).subscribe(data => console.log(data));
+    this.router.navigate(['/']);
   }
 }
