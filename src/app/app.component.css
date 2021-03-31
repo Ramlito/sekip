@@ -25,11 +25,13 @@
   color: white;
 }
 .footer {
-  position: fixed;
+  position: static;
   left: 0;
   bottom: 0;
+  height: 5em;
   width: 100%;
   background-color: black;
   color: white;
   text-align: center;
 }
+

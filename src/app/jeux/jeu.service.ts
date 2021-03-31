@@ -8,6 +8,7 @@ import {Datas} from './jeux-data';
 import {MessagesService} from '../messages/messages.service';
 import {Type} from '@angular/compiler';
 import {environment} from '../../environments/environment';
+import {FormControl} from '@angular/forms';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -32,6 +33,30 @@ export class JeuService {
         tap(val => console.log(val)),
         catchError(err => throwError(err))
       );
+  }
+
+  getJeuFilterNbJ(filter?: number): Observable<Jeu>{
+      const url = 'http://localhost:8000/api/jeux?nbJoueurs=' + filter;
+      return this.http.get<any>(url, httpOptions)
+        .pipe(
+          map(res => res.data.item),
+          tap(body => console.log(' **http** ', body)),
+          catchError(err => {
+            console.log(err);
+            return throwError('bug');
+          }));
+  }
+
+  getJeuFilterAge(filter?: number): Observable<Jeu>{
+    const url = 'http://localhost:8000/api/jeux?age=' + filter;
+    return this.http.get<any>(url, httpOptions)
+      .pipe(
+        map(res => res.data.item),
+        tap(body => console.log(' **http** ', body)),
+        catchError(err => {
+          console.log(err);
+          return throwError('bug');
+        }));
   }
 
   // @ts-ignore

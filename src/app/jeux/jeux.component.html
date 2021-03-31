@@ -1,5 +1,12 @@
 <p>Liste des jeux !</p>
 <p-button label="Tri" [icon]="icon" (onClick)="onTri()"></p-button>
+<div [formGroup]="formulaire">
+  <input id="filtre" type="text" pInputText placeholder="filtre" formControlName="filtre">
+</div>
+<p-button label="TriFilterNbJ" [icon]="icon" (onClick)="onFilterNbJ()">Filtre nombre joueurs</p-button>
+<p-button label="TriFilterAge" [icon]="icon" (onClick)="onFilterAge()">Filtre Age</p-button>
+
+
 
 <button class="btn" (click)="goToAjout()">Ajouter un jeu</button>
 

@@ -4,6 +4,7 @@ import {Jeu} from './jeu';
 import {JeuService} from './jeu.service';
 import {MessagesService} from '../messages/messages.service';
 import {Router} from '@angular/router';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-jeux',
@@ -14,6 +15,10 @@ export class JeuxComponent implements OnInit {
   jeux$: Observable<any>;
   mode = 0;
   icon = '';
+  form: any = {
+    filter: null,
+  };
+  formulaire = new FormGroup(  {filtre: new FormControl('', [Validators.required] )});
   // tslint:disable-next-line:no-shadowed-variable
   constructor(public JeuService: JeuService, private messagesService: MessagesService, private router: Router) {
     // @ts-ignore
@@ -43,6 +48,18 @@ export class JeuxComponent implements OnInit {
       this.icon = 'pi pi-caret-down';
       this.jeux$ = this.JeuService.getJeux();
     }
+  }
+
+  onFilterNbJ(){
+    console.log(this.formulaire.value);
+    this.jeux$ = this.JeuService.getJeuFilterNbJ(this.formulaire.value.filtre);
+    this.jeux$.subscribe(value => console.log(value));
+  }
+
+  onFilterAge(){
+    console.log(this.formulaire.value);
+    this.jeux$ = this.JeuService.getJeuFilterAge(this.formulaire.value.filtre);
+    this.jeux$.subscribe(value => console.log(value));
   }
 
   // tslint:disable-next-line:typedef
