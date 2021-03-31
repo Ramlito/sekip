@@ -2,7 +2,7 @@
 <Header>
   <div class="topnav">
     <ul>
-      <a [routerLink]="'/'">L'EKIP</a>
+      <a *ngIf="authService.isLoggedOut$ | async"[routerLink]="'/home'">L'EKIP</a>
       <a [routerLink]="'/jeux'">Liste Jeux</a>
       <a *ngIf="authService.isLoggedOut$ | async"[routerLink]="['/newUser']">Inscription</a>
       <a *ngIf="authService.isLoggedIn$ | async"[routerLink]="['/profil']">Profil</a>
