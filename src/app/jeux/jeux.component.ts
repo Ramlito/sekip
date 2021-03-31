@@ -31,7 +31,7 @@ export class JeuxComponent implements OnInit {
     // tslint:disable-next-line:triple-equals
     if (this.mode == 1) { // tri croissant par nom
       this.icon = 'pi pi-chevron-up';
-      this.jeux = this.JeuService.getJeux(1);
+      this.jeux = this.JeuService.getJeux();
       // tslint:disable-next-line:triple-equals
     } else if (this.mode == 2) { // tri décroissant par nom
       this.icon = 'pi pi-chevron-down';

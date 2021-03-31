@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import {catchError, map, retry, tap} from 'rxjs/operators';
+import {catchError, map, tap} from 'rxjs/operators';
 import {Jeu} from './jeu';
 import {Datas} from './jeux-data';
 import {MessageService} from 'primeng/api';
 import {MessagesService} from '../messages/messages.service';
+import {Type} from '@angular/compiler';
+import {environment} from '../../environments/environment';
 
 
 const httpOptions = {
@@ -20,26 +22,22 @@ export class JeuService {
   map: Map<number, Jeu>;
 
   constructor(private http: HttpClient, private messagesService: MessagesService) {
-    /*this.jeux = Datas.getInstance().genereJeux();
-    this.jeuxCopie = this.jeux.slice();
-    this.map = new Map();
-    this.jeux.forEach ((x: Jeu) => this.map.set(x.id, x));*/
   }
-  getJeu(id: number): Jeu {
-    return this.map.get(id);
+
+  getJeu(id: number): Observable<Jeu> {
+    return this.http.get<any>(environment.apiUrl + '/jeux/' + id, httpOptions)
+      .pipe(
+        map(rep => rep.data.item),
+        tap(val => console.log(val)),
+        catchError(err => throwError(err))
+      );
   }
   // @ts-ignore
-  getJeux(sort?: number): Observable<Jeu[]> {
-    /*if (sort === undefined) { return this.jeux; }
-    if (sort > 0) { return this.jeuxCopie.sort((x: Jeu , y: Jeu): number => x.nom > y.nom ? 1 : -1); }
-    if (sort < 0) { return this.jeuxCopie.sort((x: Jeu , y: Jeu): number => y.nom > x.nom ? 1 : -1); }
-    if (sort === 0) { return this.jeuxCopie.sort((x: Jeu , y: Jeu): number => y.id > x.id ? 1 : -1); }*/
-    const params = '';
-    const url = `${this.apiUrl}/jeux${params}`;
-    return this.http.get<any>(url, httpOptions)
+  getJeux(): Observable<Type> {
+    return this.http.get<any>(environment.apiUrl + '/jeux', httpOptions)
       .pipe(
-        map(res => res.data.item),
-        tap(body => console.log(' **http** ', body))
+        map(rep => rep.data.item),
+        catchError(err => throwError(err))
       );
   }
 
