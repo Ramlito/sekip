@@ -4,6 +4,9 @@
       <a> Connectez-vous :</a>
       <input type="text" formControlName="email" pInputText placeholder="email"><br>
       <input type="password" formControlName="password" pInputText placeholder="mots de passe"><br>
+      <div *ngIf="password.invalid &&  password.touched && email.invalid && email.touched"
+           class="mat-error">
+        <h1>Le nom d'utilisateur ou le mots de passe est incorect.</h1></div>
       <button [disabled]="!formulaire.valid">Valider</button>
       <a routerLink="/newUser"><button class="btn btn-success pull-right" > S'inscrire</button></a>
     </form>

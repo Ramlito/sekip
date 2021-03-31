@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   formulaire = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
-    password: new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')])
+    password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[0-9]).{8,}$')])
   });
 
   constructor(private messageService: MessageService, private authService: AuthentificationService, private router: Router,
