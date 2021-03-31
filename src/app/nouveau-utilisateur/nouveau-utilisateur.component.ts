@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MesValidateurs} from './MesValidateurs';
-import {ɵBrowserAnimationBuilder} from '@angular/platform-browser/animations';
-import {Observable} from 'rxjs';
-import {catchError} from 'rxjs/operators';
+import {MessageService} from 'primeng/api';
+import {AuthentificationService} from '../_services/authentification.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {first} from 'rxjs/operators';
+
 
 
 @Component({
@@ -13,19 +15,39 @@ import {catchError} from 'rxjs/operators';
 })
 export class NouveauUtilisateurComponent implements OnInit {
   submitted = false;
+  form: any = {
+    nom: null,
+    prenom: null,
+    pseudo: null,
+    email: null,
+    password: null
+  };
+  loading = false;
+  returnUrl: string;
+  error = '';
+
+
 
   // @ts-ignore
   formulaire = new FormGroup({
     nom: new FormControl('', [Validators.required, Validators.maxLength(100), Validators.minLength(2)]),
     prenom: new FormControl('', [Validators.required, Validators.maxLength(100), Validators.minLength(2)]),
     pseudo: new FormControl('', [Validators.required, Validators.maxLength(100), Validators.minLength(2)]),
-    mail : new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
+    email : new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
     password : new FormGroup( {
       pwd: new FormControl('', [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[0-9]).{8,}$')]),
       confirmPwd: new FormControl('')
-    },[MesValidateurs.passwordConfirming] )
-    });
+    }, [MesValidateurs.passwordConfirming] )
+  });
+  // tslint:disable-next-line:typedef
+  constructor(private messageService: MessageService, private authService: AuthentificationService, private router: Router,
+              private route: ActivatedRoute) {
+  }
 
+  ngOnInit(): void {
+    // get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
+  }
 
   //
   // tslint:disable-next-line:typedef
@@ -44,8 +66,8 @@ export class NouveauUtilisateurComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  get mail(): AbstractControl {
-    return this.formulaire.get('mail');
+  get email(): AbstractControl {
+    return this.formulaire.get('email');
   }
 
   // tslint:disable-next-line:typedef
@@ -61,15 +83,27 @@ export class NouveauUtilisateurComponent implements OnInit {
   get password(): AbstractControl {
     return this.formulaire.get('password');
   }
-  // tslint:disable-next-line:typedef
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
 
   // tslint:disable-next-line:typedef
   onSubmit() {
+    this.form = this.formulaire.value;
+    this.loading = true;
+    // tslint:disable-next-line:max-line-length
+    this.authService.register(this.form.nom, this.form.prenom, this.form.pseudo, this.form.email, this.form.password.confirmPwd)
+      .pipe(first())
+      .subscribe(
+        () => {
+          this.router.navigate([this.returnUrl]);
+          this.messageService.add({severity: 'info', summary: 'Création de l\'utilisateur', detail: `Succès`, key: 'main'});
+        },
+        error => {
+          console.log('Erreur: ', error);
+          // this.error = error.error.data.values[0];
+          this.loading = false;
+          this.messageService.add({severity: 'error', summary: 'Erreur', detail: this.error, key: 'main'});
+        }
+      );
+
   }
 }
 
