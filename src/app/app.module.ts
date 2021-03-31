@@ -30,6 +30,8 @@ import { JeuxComponent } from './jeux/jeux.component';
 import { MessagesComponent } from './messages/messages.component';
 import { JeuxDetailsComponent } from './jeux/jeux-details.component';
 import {JeuService} from './jeux/jeu.service';
+import { FormAjoutJeuComponent } from './forms/form-ajout-jeu/form-ajout-jeu.component';
+import {DropdownModule} from "primeng/dropdown";
 
 
 
@@ -47,7 +49,8 @@ registerLocaleData(localeFr, 'fr');
 
     JeuxComponent,
     MessagesComponent,
-    JeuxDetailsComponent
+    JeuxDetailsComponent,
+    FormAjoutJeuComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,8 @@ registerLocaleData(localeFr, 'fr');
     ReactiveFormsModule,
     TableModule,
     PanelModule,
-    ListboxModule
+    ListboxModule,
+    DropdownModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},

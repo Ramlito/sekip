@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import {catchError, map, retry, tap} from 'rxjs/operators';
+import {catchError, map, retry, shareReplay, tap} from 'rxjs/operators';
 import {Jeu} from './jeu';
 import {Datas} from './jeux-data';
 import {MessageService} from 'primeng/api';
 import {MessagesService} from '../messages/messages.service';
+import {environment} from '../../environments/environment';
 
 
 const httpOptions = {
@@ -17,7 +18,7 @@ export class JeuService {
   private readonly apiUrl = 'http://localhost:8000/api';
   jeux: Jeu[];
   jeuxCopie: Jeu[];
-  map: Map<number, Jeu>;
+  map = new Map();
 
   constructor(private http: HttpClient, private messagesService: MessagesService) {
     /*this.jeux = Datas.getInstance().genereJeux();
@@ -41,6 +42,27 @@ export class JeuService {
         map(res => res.data.item),
         tap(body => console.log(' **http** ', body))
       );
+  }
+
+  addJeu(jeux: Jeu): void {
+    this.http.post(environment.apiUrl + '/jeux', {
+      nom: jeux.nom,
+      description: jeux.description,
+      regles: jeux.regles,
+      langue: jeux.langue,
+      url_media: jeux.url_media,
+      age: jeux.age,
+      poids: jeux.poids,
+      nombre_joueurs: jeux.nombre_joueurs,
+      categorie: jeux.categorie,
+      duree: jeux.duree,
+    }, httpOptions).pipe(
+      tap(rep => console.log(rep)),
+      shareReplay(),
+      catchError(err => {
+        return throwError(err);
+        // return of('');
+      }));
   }
 
 }

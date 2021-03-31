@@ -4,8 +4,8 @@ import {LoginComponent} from './login/login.component';
 import {ProfileComponent} from './profile/profile.component';
 import {LpSolverTestComponent} from './lp-solver-test/lp-solver-test.component';
 import {NouveauUtilisateurComponent} from './nouveau-utilisateur/nouveau-utilisateur.component';
-import { JeuxComponent } from './jeux/jeux.component';
-import { JeuxDetailsComponent } from './jeux/jeux-details.component';
+import { JeuxComponent } from '../app/jeux/jeux.component';
+import { JeuxDetailsComponent } from '../app/jeux/jeux-details.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
