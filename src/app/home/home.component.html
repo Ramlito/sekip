@@ -1,0 +1,14 @@
+<div class="encadré">
+  <h1 *ngIf="authService.isLoggedOut$ | async">Bienvenue sur la ludoteque de l'EKIP</h1>
+  <h1 *ngIf="authService.isLoggedIn$ | async" >Bienvenue sur la ludoteque de l'EKIP de {{authService.userValue.pseudo}}</h1>
+  <h2 *ngIf="authService.isLoggedIn$ | async ">Vos Jeux: </h2>
+  <h2 *ngIf="authService.isLoggedOut$ | async">Connectez-vous ou inscrivez-vous pour pouvoir gérer vos jeux</h2>
+</div>
+<div class="morph">
+<div><img src ="/assets/image/logo.png"></div>
+</div>
+<div id="encadré">
+  <p>Nous sommes une équipe composé de 5 personnes en charge du développement du site web</p>
+
+</div>
+

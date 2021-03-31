@@ -29,6 +29,7 @@ import { JeuxComponent } from './jeux/jeux.component';
 import { MessagesComponent } from './messages/messages.component';
 import { JeuxDetailsComponent } from './jeux/jeux-details.component';
 import {JeuService} from './jeux/jeu.service';
+import {HomeComponent} from "./home/home.component";
 
 import {ButtonModule} from 'primeng/button';
 
@@ -48,6 +49,7 @@ registerLocaleData(localeFr, 'fr');
     LoginComponent,
     ProfileComponent,
     LpSolverTestComponent,
+    HomeComponent,
     NouveauUtilisateurComponent,
     JeuxComponent,
     MessagesComponent,

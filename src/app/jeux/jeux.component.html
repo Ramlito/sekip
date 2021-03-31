@@ -1,10 +1,9 @@
-<<<<<<< HEAD
+<p>Liste des jeux !</p>
 <p>Liste des jeux:</p>
 <p-button label="Tri" [icon]="icon" (onClick)="onTri()"></p-button>
-=======
+
 <button class="btn" (click)="goToAjout()">Ajouter un jeu</button>
 
->>>>>>> ba78b4275ab39b0b02d51020c5b4e117e3295f0b
 <p-table [value]="(jeux$ | async)" let jeux>
   <ng-template pTemplate="header">
     <tr>
@@ -19,12 +18,10 @@
       <th>Poids</th>
       <th>Nombre Joueurs</th>
       <th>Durée</th>
-<<<<<<< HEAD
       <th>Note</th>
-=======
+
       <th>Règles</th>
       <th>Catégorie</th>
->>>>>>> ba78b4275ab39b0b02d51020c5b4e117e3295f0b
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-jeux>
@@ -32,7 +29,6 @@
       <td>{{jeux.id}}</td>
       <td>{{jeux.nom}}</td>
       <td>{{jeux.description}}</td>
-<<<<<<< HEAD
       <td>{{jeux.rules}}</td>
       <td>{{jeux.langue}}</td>
       <td>{{jeux.url_media}}</td>
@@ -44,7 +40,7 @@
       <td>{{jeux.note}}</td>
       <td>
         <button type="button" pButton pRipple icon="pi pi-search" [routerLink]="['/jeux', jeux.id]"></button>
-=======
+
       <td>{{jeux.themeId}}</td>
       <td>{{jeux.editeurId}}</td>
       <td>{{jeux.url_media}}</td>
@@ -57,7 +53,6 @@
       <td>{{jeux.categorie}}</td>
       <td>
         <button type="button" pButton pRipple icon="pi pi-list" [routerLink]="['/jeux',jeux.id]"></button>
->>>>>>> ba78b4275ab39b0b02d51020c5b4e117e3295f0b
       </td>
     </tr>
   </ng-template>

@@ -1,28 +1,24 @@
-<div class="public">
-  <ul>
-    <li><a [routerLink]="'/jeux'">Liste Jeux</a></li>
-    <li><a [routerLink]="'/'">L'EKIP</a></li>
-  </ul>
+<html>
+<Header>
+  <div class="topnav">
+    <ul>
+      <a *ngIf="authService.isLoggedOut$ | async"[routerLink]="'/home'">L'EKIP</a>
+      <a [routerLink]="'/jeux'">Liste Jeux</a>
+      <a *ngIf="authService.isLoggedOut$ | async"[routerLink]="['/newUser']">Inscription</a>
+      <a *ngIf="authService.isLoggedIn$ | async"[routerLink]="['/profile']">Profil</a>
+      <a *ngIf="authService.isLoggedOut$ | async"[routerLink]="['/login']">Login</a>
+      <a  *ngIf="authService.isLoggedIn$ | async"(click)="logout()">Logout</a>
+    </ul>
+  </div>
+
+  <router-outlet></router-outlet>
+
+  <p-toast position="top-right" key="main"></p-toast>
+</Header>
+
+<div class="footer">
+  <p>Le projet est réalisé par : Brandon, Ryan, Valentin, Martin, Thibault</p>
+  <p>©EKIP - Tous droit réservé - 2021</p>
 </div>
 
-<div class="private">
-<ul>
-  <li *ngIf="authService.isLoggedOut$ | async"><a [routerLink]="['/login']">Login</a></li>
-  <li *ngIf="authService.isLoggedOut$ | async"><a [routerLink]="['/newUser']">Register</a></li>
-  <li *ngIf="authService.isLoggedIn$ | async"><a [routerLink]="['/profile']">Profile</a></li>
-  <li *ngIf="authService.isLoggedIn$ | async"><a (click)="logout()">Logout</a></li>
-</ul>
-</div>
-<!--
-<div class="article">
-  <h1 *ngIf="authService.isLoggedOut$ | async">Bienvenue sur la ludoteque de l'EKIP</h1>
-  <h1 *ngIf="authService.isLoggedIn$ | async" >Bienvenue sur la ludoteque de l'EKIP de {{authService.userValue.pseudo}}</h1>
-  <h2 *ngIf="authService.isLoggedIn$ | async ">Vos Jeux: </h2>
-  <h2 *ngIf="authService.isLoggedOut$ | async">Connectez-vous ou inscrivez-vous pour pouvoir gérer vos jeux</h2>
-</div>
--->
-<router-outlet></router-outlet>
-
-<!--<p-toast position="top-right" key="main"></p-toast>-->
-
-<button (click)="show()">test</button>
+</html>

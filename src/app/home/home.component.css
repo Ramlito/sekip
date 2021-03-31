@@ -1,0 +1,43 @@
+img{
+  width:30%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  margin-top: 5%;
+}
+
+p, h1, h2{
+  font-family: "Grill Sans", sans-serif;
+  text-align: center;
+}
+
+a {
+  border: 1px solid #f1f1f1;
+  background: #fff;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+#encadré{
+  width:50%;
+  margin:0 auto;
+}
+
+
+
+.morph div img {
+  width: 400px;
+  height: 300px;
+  -webkit-filter: grayscale(0) blur(0px);
+  filter: grayscale(0) blur(0px);
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.morph div:hover img {
+  width: 300px; /* on affiche l'image au carré */
+  height: 300px;
+  border-radius: 50%;  /* on arrondit l'image */
+  -webkit-transform: rotate(360deg); /* rotation de l'image */
+  transform: rotate(360deg);
+}
+
