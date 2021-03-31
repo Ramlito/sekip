@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { Observable} from 'rxjs';
-import {map, tap} from 'rxjs/operators';
+import {Observable, throwError} from 'rxjs';
+import {catchError, map, tap} from 'rxjs/operators';
 import {Jeu} from './jeu';
 import {Datas} from './jeux-data';
 
@@ -25,12 +25,33 @@ export class JeuService {
     return this.map.get(id);
   }
   // @ts-ignore
-  getJeux(sort?: number): Jeu[] {
-    const data = this.jeux;
-    if (sort === undefined) { this.jeux = data;
-                              return; }
-    if (sort > 0) { return this.jeux = data.sort((x: Jeu , y: Jeu): number => x.nom > y.nom ? 1 : -1); }
-    if (sort < 0) { return this.jeux = data.sort((x: Jeu , y: Jeu): number => y.nom > x.nom ? 1 : -1); }
+  getJeux(sort?: number): Observable<Jeu[]> {
+    if (sort === undefined) { const url = 'http://localhost:8000/api/jeux';
+                              return this.http.get<any>(url, httpOptions)
+        .pipe(
+          map(res => res.data.item),
+          tap(body => console.log(' **http** ', body))
+        ); }
+    if (sort > 0) { const url = 'http://localhost:8000/api/jeux?sort=nom';
+                    return this.http.get<any>(url, httpOptions)
+        .pipe(
+          map(res => res.data.item),
+          tap(body => console.log(' **http** ', body)),
+          catchError(err => {
+            console.log(err);
+            return throwError('bug');
+          }));
+         }
+    if (sort < 0) { const url = 'http://localhost:8000/api/jeux?sort=note';
+                    return this.http.get<any>(url, httpOptions)
+        .pipe(
+          map(res => res.data.item),
+          tap(body => console.log(' **http** ', body)),
+          catchError(err => {
+            console.log(err);
+            return throwError('bug');
+          }));
+    }
   }
 
   /*sortData(sort: Sort): any {
@@ -51,14 +72,5 @@ export class JeuService {
       }
     });
   }*/
-
-  getJeuxObs(): Observable<Jeu[]> {
-    const url = 'http://localhost:8000/api/jeux';
-    return this.http.get<any>(url, httpOptions)
-      .pipe(
-        map(res => res.data.item),
-        tap(body => console.log(' **http** ', body))
-      );
-  }
 
 }

@@ -14,6 +14,7 @@
       <th>Nombre Joueurs</th>
       <th>Catégories</th>
       <th>Durée</th>
+      <th>Note</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-jeux>
@@ -29,6 +30,7 @@
       <td>{{jeux.nombre_joueurs}}</td>
       <td>{{jeux.categorie}}</td>
       <td>{{jeux.duree}}</td>
+      <td>{{jeux.note}}</td>
       <td>
         <button type="button" pButton pRipple icon="pi pi-search" [routerLink]="['/jeux', jeux.id]"></button>
       </td>

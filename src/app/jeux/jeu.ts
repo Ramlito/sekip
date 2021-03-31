@@ -10,4 +10,5 @@ export interface Jeu {
   nombre_joueurs: number;
   categorie: string;
   duree: number;
+  note: number;
 }

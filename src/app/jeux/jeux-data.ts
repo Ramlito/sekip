@@ -34,7 +34,8 @@ export class Datas {
         poids: faker.name.poids(),
         nombre_joueurs: faker.name.nombre_joueurs(),
         categorie: faker.name.categorie(),
-        duree: faker.name.duree()
+        duree: faker.name.duree(),
+        note: faker.name.note()
       };
       jeux.push(jeu);
     }

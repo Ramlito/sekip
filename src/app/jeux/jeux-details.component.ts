@@ -22,6 +22,7 @@ import {Jeu} from './jeu';
             <div style="font-weight: bold">{{jeu.nombre_joueurs}}</div>
             <div style="font-weight: bold">{{jeu.categorie}}</div>
             <div style="font-weight: bold">{{jeu.duree}}</div>
+            <div style="font-weight: bold">{{jeu.note}}</div>
           </div>
         </div>
       </div>

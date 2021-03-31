@@ -10,7 +10,7 @@ import {MessagesService} from '../messages/messages.service';
   styleUrls: ['./jeux.component.css']
 })
 export class JeuxComponent implements OnInit {
-  jeux: Jeu[];
+  jeux: Observable<any>;
   mode = 0;
   icon = '';
   // tslint:disable-next-line:no-shadowed-variable
@@ -23,7 +23,7 @@ export class JeuxComponent implements OnInit {
   ngOnInit(): void {
     // @ts-ignore
     this.jeux = this.jeuService.getJeux();
-    this.jeux$ = this.jeuService.getJeuxObs();
+    this.jeux$ = this.jeuService.getJeux();
   }
 
   // tslint:disable-next-line:typedef
@@ -32,17 +32,17 @@ export class JeuxComponent implements OnInit {
     this.mode++;
     // tslint:disable-next-line:triple-equals
     if (this.mode == 1) { // tri croissant par nom
-      this.icon = 'pi pi-chevron-up';
-      this.jeux = this.jeuService.getJeux(1);
+      this.icon = 'pi pi-caret-up';
+      this.jeux$ = this.jeuService.getJeux(1);
       // tslint:disable-next-line:triple-equals
-    } else if (this.mode == 2) { // tri décroissant par nom
-      this.icon = 'pi pi-chevron-down';
-      this.jeux = this.jeuService.getJeux(-1);
+    } else if (this.mode == 2) { // tri décroissant par note
+      this.icon = 'pi pi-plus';
+      this.jeux$ = this.jeuService.getJeux(1);
       // tslint:disable-next-line:triple-equals
     } else {  // liste de départ
       this.mode = 0;
-      this.icon = '';
-      this.jeux = this.jeuService.getJeux();
+      this.icon = 'pi pi-caret-down';
+      this.jeux$ = this.jeuService.getJeux();
     }
   }
 }
