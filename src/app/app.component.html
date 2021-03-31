@@ -5,9 +5,9 @@
       <a *ngIf="authService.isLoggedOut$ | async"[routerLink]="'/home'">L'EKIP</a>
       <a [routerLink]="'/jeux'">Liste Jeux</a>
       <a *ngIf="authService.isLoggedOut$ | async"[routerLink]="['/newUser']">Inscription</a>
-      <a *ngIf="authService.isLoggedIn$ | async"[routerLink]="['/profil']">Profil</a>
+      <a *ngIf="authService.isLoggedIn$ | async"[routerLink]="['/profile']">Profil</a>
       <a *ngIf="authService.isLoggedOut$ | async"[routerLink]="['/login']">Login</a>
-      <a  *ngIf="authService.isLoggedIn$ | async">(click)="logout()">Logout</a>
+      <a  *ngIf="authService.isLoggedIn$ | async"(click)="logout()">Logout</a>
     </ul>
   </div>
 
