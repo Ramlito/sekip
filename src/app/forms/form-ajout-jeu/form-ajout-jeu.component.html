@@ -49,7 +49,7 @@
                placeholder="Url de média"
                formControlName="url_media" type="text" pInputText>
         <div *ngIf="url_media.invalid && (url_media.dirty || url_media.touched)" class="mat-error">
-          <div *ngIf="url_media?.errors.required" style="color: crimson">L'id d'éditeur est obligatoire</div>
+          <div *ngIf="url_media?.errors.required" style="color: crimson">L'url de média d'éditeur est obligatoire</div>
         </div>
       </div>
 
