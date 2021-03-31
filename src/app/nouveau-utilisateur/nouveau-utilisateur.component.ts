@@ -38,7 +38,7 @@ export class NouveauUtilisateurComponent implements OnInit {
       pwd: new FormControl('', [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[0-9]).{8,}$')]),
       confirmPwd: new FormControl('')
     }, [MesValidateurs.passwordConfirming] )
-  });
+    });
   // tslint:disable-next-line:typedef
   constructor(private messageService: MessageService, private authService: AuthentificationService, private router: Router,
               private route: ActivatedRoute) {

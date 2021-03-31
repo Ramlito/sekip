@@ -1,14 +1,21 @@
-<header>
-  <div id ="container">
-    <form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
-      <a> Connectez-vous :</a>
-      <input type="text" formControlName="email" pInputText placeholder="email"><br>
-      <input type="password" formControlName="password" pInputText placeholder="mots de passe"><br>
-      <div *ngIf="password.invalid &&  password.touched && email.invalid && email.touched"
-           class="mat-error">
-        <h1>Le nom d'utilisateur ou le mots de passe est incorect.</h1></div>
-      <button [disabled]="!formulaire.valid">Valider</button>
-      <a routerLink="/newUser"><button class="btn btn-success pull-right" > S'inscrire</button></a>
-    </form>
+<div class="login">
+<form class="form" [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+  <label for="email">Email</label><br>
+  <input id="email" type="text" pInputText placeholder="Email" formControlName="email">
+  <div *ngIf="email.invalid && (email.dirty || email.touched)" class="mat-error">
+    <div *ngIf="email?.errors.required">L'adresse mail est obligatoire</div>
+    <div *ngIf="email?.errors.email">L'adresse mail doit être au bon format</div>
   </div>
-</header>
+  <label for="password">Password</label><br>
+  <input id="password" type="text" pInputText placeholder="Mot de passe" formControlName="password">
+  <div *ngIf="password.invalid && (password.dirty || password.touched)" class="mat-error">
+    <div *ngIf="password?.errors.required">Le mot de passe est obligatoire</div>
+    <div *ngIf="password?.errors.pattern">Le mot de passe doit comporter au minimum 8 caractères, un majuscule, un chiffre</div>
+  </div>
+  <div class="submit_option">
+    <button pButton type="submit" label="Se connecter" [disabled]="!formulaire.valid"></button>
+    <p style="margin-top: 100px;">Si vous n'avez pas de compte, inscrivez-vous!!</p>
+    <button pButton type="button" label="S'inscrire" class="p-badge-secondary" [routerLink]="['/newUser']"></button>
+  </div>
+</form>
+</div>
