@@ -30,7 +30,9 @@ import { JeuxComponent } from './jeux/jeux.component';
 import { MessagesComponent } from './messages/messages.component';
 import { JeuxDetailsComponent } from './jeux/jeux-details.component';
 import {JeuService} from './jeux/jeu.service';
-
+import { FormAjoutJeuComponent } from './forms/form-ajout-jeu/form-ajout-jeu.component';
+import {DropdownModule} from 'primeng/dropdown';
+import {InputTextModule} from 'primeng/inputtext';
 
 
 
@@ -42,12 +44,11 @@ registerLocaleData(localeFr, 'fr');
     LoginComponent,
     ProfileComponent,
     LpSolverTestComponent,
-
     NouveauUtilisateurComponent,
-
     JeuxComponent,
     MessagesComponent,
-    JeuxDetailsComponent
+    JeuxDetailsComponent,
+    FormAjoutJeuComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +62,9 @@ registerLocaleData(localeFr, 'fr');
     ReactiveFormsModule,
     TableModule,
     PanelModule,
-    ListboxModule
+    ListboxModule,
+    DropdownModule,
+    InputTextModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},
@@ -71,4 +74,4 @@ registerLocaleData(localeFr, 'fr');
   bootstrap: [AppComponent]
 })
 export class AppModule {
-};
+}

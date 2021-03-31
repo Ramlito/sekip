@@ -6,6 +6,7 @@ import {Type} from '@angular/compiler';
 import {Jeu} from './jeu';
 
 // @ts-ignore
+// @ts-ignore
 @Component({
   selector: 'app-jeux-details',
   styles: [
