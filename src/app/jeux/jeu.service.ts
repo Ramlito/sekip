@@ -24,16 +24,32 @@ export class JeuService {
   getJeu(id: number): Jeu {
     return this.map.get(id);
   }
-
-  getJeux(): Jeu[] {
-    return this.jeux;
-  }
   // @ts-ignore
-  /*getJeux(sort?: number): Jeu[] {
-    if (sort === undefined) { return this.jeux; }
-    if (sort > 0) { return this.jeuxCopie.sort((x: Jeu , y: Jeu): number => x.nom > y.nom ? 1 : -1); }
-    if (sort < 0) { return this.jeuxCopie.sort((x: Jeu , y: Jeu): number => y.nom > x.nom ? 1 : -1); }
-    if (sort === 0) { return this.jeuxCopie.sort((x: Jeu , y: Jeu): number => y.id > x.id ? 1 : -1); }
+  getJeux(sort?: number): Jeu[] {
+    const data = this.jeux;
+    if (sort === undefined) { this.jeux = data;
+                              return; }
+    if (sort > 0) { return this.jeux = data.sort((x: Jeu , y: Jeu): number => x.nom > y.nom ? 1 : -1); }
+    if (sort < 0) { return this.jeux = data.sort((x: Jeu , y: Jeu): number => y.nom > x.nom ? 1 : -1); }
+  }
+
+  /*sortData(sort: Sort): any {
+    const data = this.jeux.slice();
+    if (!sort.active || sort.direction === '') {
+      this.jeux = data;
+      return;
+    }
+    this.jeux = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'nom': return this.compare(a.nom, b.nom, isAsc);
+        case 'theme': return this.compare(a.theme_id.nom, b.theme_id.nom, isAsc);
+        case 'description': return this.compare(a.description, b.description, isAsc);
+        case 'joueurs': return this.compare(a.nombre_joueurs, b.nombre_joueurs, isAsc);
+        case 'age': return this.compare(a.age, b.age, isAsc);
+        default: return 0;
+      }
+    });
   }*/
 
   getJeuxObs(): Observable<Jeu[]> {

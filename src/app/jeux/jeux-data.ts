@@ -32,7 +32,7 @@ export class Datas {
         url_media: faker.name.url_media(),
         age: faker.name.age(),
         poids: faker.name.poids(),
-        nombre_joueurs: faker.name.poids(),
+        nombre_joueurs: faker.name.nombre_joueurs(),
         categorie: faker.name.categorie(),
         duree: faker.name.duree()
       };

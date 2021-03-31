@@ -88,7 +88,8 @@ export class NouveauUtilisateurComponent implements OnInit {
   onSubmit() {
     this.form = this.formulaire.value;
     this.loading = true;
-    this.authService.register(this.form.nom, this.form.prenom, this.form.pseudo, this.form.email, this.form.password)
+    // tslint:disable-next-line:max-line-length
+    this.authService.register(this.form.nom, this.form.prenom, this.form.pseudo, this.form.email, this.form.password.confirmPwd)
       .pipe(first())
       .subscribe(
         () => {

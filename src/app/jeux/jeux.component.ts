@@ -27,26 +27,22 @@ export class JeuxComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  /*onTri() {
+  onTri() {
     console.log('Mode : ' + this.mode);
     this.mode++;
     // tslint:disable-next-line:triple-equals
     if (this.mode == 1) { // tri croissant par nom
       this.icon = 'pi pi-chevron-up';
-      this.jeux = this.JeuService.getJeux(1);
+      this.jeux = this.jeuService.getJeux(1);
       // tslint:disable-next-line:triple-equals
     } else if (this.mode == 2) { // tri décroissant par nom
       this.icon = 'pi pi-chevron-down';
-      this.jeux = this.JeuService.getJeux(-1);
+      this.jeux = this.jeuService.getJeux(-1);
       // tslint:disable-next-line:triple-equals
-    } else if (this.mode == 3) { // tri décroissant par id
-      this.icon = 'pi pi-user';
-      this.jeux = this.JeuService.getJeux(0);
     } else {  // liste de départ
       this.mode = 0;
       this.icon = '';
-      this.jeux = this.JeuService.getJeux();
+      this.jeux = this.jeuService.getJeux();
     }
-
-  }*/
+  }
 }
