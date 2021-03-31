@@ -1,5 +1,4 @@
 <p>Liste des jeux !</p>
-<p>Liste des jeux:</p>
 <p-button label="Tri" [icon]="icon" (onClick)="onTri()"></p-button>
 
 <button class="btn" (click)="goToAjout()">Ajouter un jeu</button>
@@ -18,10 +17,9 @@
       <th>Poids</th>
       <th>Nombre Joueurs</th>
       <th>Durée</th>
-      <th>Note</th>
-
-      <th>Règles</th>
       <th>Catégorie</th>
+      <th>Règles</th>
+      <th>Note</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-jeux>
@@ -29,28 +27,16 @@
       <td>{{jeux.id}}</td>
       <td>{{jeux.nom}}</td>
       <td>{{jeux.description}}</td>
-      <td>{{jeux.rules}}</td>
-      <td>{{jeux.langue}}</td>
-      <td>{{jeux.url_media}}</td>
-      <td>{{jeux.age}}</td>
-      <td>{{jeux.poids}}</td>
-      <td>{{jeux.nombre_joueurs}}</td>
-      <td>{{jeux.categorie}}</td>
-      <td>{{jeux.duree}}</td>
-      <td>{{jeux.note}}</td>
-      <td>
-        <button type="button" pButton pRipple icon="pi pi-search" [routerLink]="['/jeux', jeux.id]"></button>
-
       <td>{{jeux.themeId}}</td>
       <td>{{jeux.editeurId}}</td>
       <td>{{jeux.url_media}}</td>
-      <td>{{jeux.language}}</td>
+      <td>{{jeux.langue}}</td>
       <td>{{jeux.age}}</td>
       <td>{{jeux.poids}}</td>
-      <td>{{jeux.nombreJoueurs}}</td>
-      <td>{{jeux.duration}}</td>
-      <td>{{jeux.rules}}</td>
+      <td>{{jeux.nombre_joueurs}}</td>
+      <td>{{jeux.duree}}</td>
       <td>{{jeux.categorie}}</td>
+      <td>{{jeux.note}}</td>
       <td>
         <button type="button" pButton pRipple icon="pi pi-list" [routerLink]="['/jeux',jeux.id]"></button>
       </td>
