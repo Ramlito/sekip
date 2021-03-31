@@ -20,10 +20,11 @@ export class JeuService {
   constructor(private http: HttpClient, private messagesService: MessagesService) {
   }
 
-  getJeu(id: number): Observable<Type> {
+  getJeu(id: number): Observable<Jeu> {
     return this.http.get<any>(environment.apiUrl + '/jeux/' + id, httpOptions)
       .pipe(
         map(rep => rep.data.item),
+        tap(val => console.log(val)),
         catchError(err => throwError(err))
       );
   }
